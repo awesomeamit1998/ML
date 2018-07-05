@@ -1,3 +1,11 @@
+
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jun 11 15:19:26 2018
+
+@author: Amit Jena
+"""
+
 # ML
 #web scraping of hotel lee reviews
 import requests
@@ -11,8 +19,10 @@ for page in range(0,65,5):
     soup=BeautifulSoup(t,"html.parser")
     right_table=soup.find("div",class_="content_column ui_column is-8-desktop is-12")
     for row in right_table.findAll("div",class_="quote"):
+        print("Scraping please wait", ,end=' ')
         cells=row.findAll("span",class_="noQuotes")
         b.append(cells[0].find(text=True))
+        print('.')
 import pandas as pd
 df=pd.DataFrame()
 df['sl no']=a
